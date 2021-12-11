@@ -45,6 +45,12 @@ const StyledContainer = styled.div`
     opacity: 1;
     transition: border, opacity 0.3s ease-in;
   }
+
+  @media(max-width: 560px){
+    small{
+      display:none;
+    }
+  }
 `;
 
 const StyledSorting = styled.div`

@@ -38,6 +38,10 @@ const StyledFigure = styled.figure`
     font-style: italic;
     font-size: 0.8rem;
   }
+
+  @media(max-width:560px){
+    font-size:0.85rem;
+  }
 `;
 
 const QuoteItem = (props) => {

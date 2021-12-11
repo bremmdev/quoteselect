@@ -43,6 +43,10 @@ const HighlightedQuote = styled.div`
     font-size: 1rem;
     margin-left: auto;
   }
+
+  @media(max-width:960px){
+    font-size:1.1rem;
+  }
 `;
 
 const StyledQuoteListByAuthor = styled.div`
