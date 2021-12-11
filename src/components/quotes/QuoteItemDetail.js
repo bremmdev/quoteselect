@@ -44,8 +44,16 @@ const HighlightedQuote = styled.div`
     margin-left: auto;
   }
 
-  @media(max-width:960px){
-    font-size:1.1rem;
+  @media (max-width: 960px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 960px) {
+    font-size: 1rem;
+
+    ficaption{
+      font-size:0.9rem;
+    }
   }
 `;
 
@@ -75,6 +83,15 @@ const StyledQuoteListByAuthor = styled.div`
 
   li::after {
     content: close-quote;
+  }
+
+  @media(max-width:560px){
+    h2{
+      font-size:1.25rem;
+    }
+    p{
+      font-size:0.9rem;
+    }
   }
 `;
 
