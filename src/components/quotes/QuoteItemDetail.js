@@ -80,7 +80,7 @@ const QuoteItemDetail = (props) => {
 
   const isFirstRender = useSelector((state) => state.quotes.isFirstRender);
   const dispatch = useDispatch();
-  const { isLoading, error, sendRequest: fetchQuotes } = useFetch();
+  const { isLoading, sendRequest: fetchQuotes } = useFetch();
 
   const quotesByAuthor = quotes.filter(
     (quote) => quote.author === props.author && quote._id !== props._id

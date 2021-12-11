@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react"
+
 import { Routes, Route, Navigate } from "react-router-dom";
 import AllQuotes from "./pages/AllQuotes";
 import NewQuote from "./pages/NewQuote";
