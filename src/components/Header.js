@@ -76,9 +76,10 @@ const Header = () => {
         </h1>
         <MainNavigation />
       </div>
-     
-      <a href="https://google.com"><AiOutlineGithub className="github-logo" /></a>
-    
+
+      <a href="https://github.com/bremmdev/quoteselect">
+        <AiOutlineGithub className="github-logo" />
+      </a>
     </StyledHeader>
   );
 };

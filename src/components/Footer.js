@@ -32,7 +32,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       <p>created by bremmdev </p>
-      <a href="https://google.com">
+      <a href="https://github.com/bremmdev/quoteselect">
         <AiOutlineGithub className="github-logo" />
       </a>
     </StyledFooter>
