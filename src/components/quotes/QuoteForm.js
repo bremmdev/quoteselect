@@ -16,13 +16,10 @@ const QuoteForm = () => {
 
   const { isLoading, error, sendRequest: postQuote } = useFetch();
 
-     const storeQuote = (quoteData) => {
-       console.log(quoteData);
-       dispatch(quoteActions.addQuote(quoteData));
-       navigate("/");
-     };
-
-
+  const storeQuote = (quoteData) => {
+    dispatch(quoteActions.addQuote(quoteData));
+    setTimeout(() => { navigate("/") }, 1000);
+  };
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -35,14 +32,14 @@ const QuoteForm = () => {
     } else {
       setFormError(null);
 
-       await postQuote(
+      await postQuote(
         {
           url: "https://quoteselect.prestoapi.com/api/quotes",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body:{
+          body: {
             _id: uuidv4(),
             text: enteredText,
             author: enteredAuthor,

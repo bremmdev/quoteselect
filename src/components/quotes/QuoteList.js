@@ -1,15 +1,10 @@
 import React, { useEffect, useCallback, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import QuoteItem from "./QuoteItem.js";
-import { useLocation, useNavigate } from "react-router";
-import {
-  AiOutlineSortAscending,
-  AiOutlineSortDescending,
-} from "react-icons/ai";
+import { AiOutlineSortAscending, AiOutlineSortDescending } from "react-icons/ai";
 import useFetch from "../../hooks/useFetch.js";
 import { BeatLoader } from "react-spinners";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { quoteActions } from "../../store/index.js";
 import Fuse from "fuse.js";
 import { StyledSorting } from "../../Styled/styled-sorting.js";
@@ -27,12 +22,10 @@ const sortQuotes = (quotes, isAscending) => {
 
 const QuoteList = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  
   const quotes = useSelector((state) => state.quotes.quotes);
-
- const isFirstRender = useSelector((state) => state.quotes.isFirstRender);
+  const isFirstRender = useSelector((state) => state.quotes.isFirstRender);
   const dispatch = useDispatch();
- const { isLoading, error, sendRequest: fetchQuotes } = useFetch();
+  const { isLoading, error, sendRequest: fetchQuotes } = useFetch();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -40,32 +33,21 @@ const QuoteList = () => {
   let queryParams = new URLSearchParams(location.search);
   const isAscending = queryParams.get("sort") === "asc";
 
+  //search for author
   const fuse = new Fuse(quotes, {
     keys: ["author"],
     includeScore: true,
     threshold: 0.3,
   });
 
-  
-  const storeQuotes = useCallback(
-    (quotes) => {
-      console.log(quotes);
-      dispatch(quoteActions.storeQuotes(quotes));
-    },
-    [dispatch]
-  );
+  const storeQuotes = useCallback(quotes => dispatch(quoteActions.storeQuotes(quotes)), [dispatch] );
 
   useEffect(() => {
     if (isFirstRender) {
-      console.log('yes')
-      fetchQuotes(
-        { url: "https://quoteselect.prestoapi.com/api/quotes" },
-        storeQuotes
-      );
+      fetchQuotes( { url: "https://quoteselect.prestoapi.com/api/quotes" }, storeQuotes);
       dispatch(quoteActions.clearFirstRender());
     }
   }, [fetchQuotes, storeQuotes, dispatch, isFirstRender, quotes]);
-  
 
   const handleOnSearch = (e) => {
     const query = e.target.value;
@@ -118,7 +100,12 @@ const QuoteList = () => {
       </StyledQuotesContainer>
       {isLoading && (
         <div className="loader">
-          <BeatLoader size={20} color="#ffd475" className="center" loading={isLoading} />
+          <BeatLoader
+            size={20}
+            color="#ffd475"
+            className="center"
+            loading={isLoading}
+          />
         </div>
       )}
 
