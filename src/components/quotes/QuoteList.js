@@ -40,13 +40,16 @@ const QuoteList = () => {
     threshold: 0.3,
   });
 
-  const storeQuotes = useCallback(quotes => dispatch(quoteActions.storeQuotes(quotes)), [dispatch] );
+  const storeQuotes = useCallback(quotes => {
+    dispatch(quoteActions.storeQuotes(quotes)) 
+  }, [dispatch] );
 
   useEffect(() => {
-    if (isFirstRender) {
+    if (isFirstRender || quotes.length === 0) {
       fetchQuotes( { url: "https://quoteselect.prestoapi.com/api/quotes" }, storeQuotes);
       dispatch(quoteActions.clearFirstRender());
     }
+
   }, [fetchQuotes, storeQuotes, dispatch, isFirstRender, quotes]);
 
   const handleOnSearch = (e) => {
