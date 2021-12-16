@@ -35,6 +35,11 @@ li{
 
 /* UTILITIES */
 
+.loader{
+  text-align: center;
+  padding:3em 0;
+}
+
 .center{
   text-align:center;
 }

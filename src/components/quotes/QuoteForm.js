@@ -56,7 +56,7 @@ const QuoteForm = () => {
   return (
     <>
       {isLoading && (
-        <div className="center">
+        <div className="loader">
           <BeatLoader
             size={20}
             color="#ffd475"

@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import QuoteItem from "./QuoteItem.js";
-import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router";
 import {
   AiOutlineSortAscending,
@@ -13,73 +12,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { quoteActions } from "../../store/index.js";
 import Fuse from "fuse.js";
-
-const StyledContainer = styled.div`
-  max-width: 40rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 0.3em solid #ffebc1;
-  margin: 0 auto 2em auto;
-  padding: 0.5em 0;
-
-  input {
-    padding: 0.7em 1em;
-    background: #ffeec8;
-    border: none;
-    outline: none;
-    border-bottom: 2px solid #666;
-    border-radius: 0.25em 0.25em 0 0;
-    font-size: 0.85rem;
-    font-family: inherit;
-    transition: border 0.25s ease-in;
-    margin-right: 0.5em;
-    opacity: 0.7;
-    background: #ffeec8 url("assets/img/search-icon.svg") no-repeat 90% 50%;
-    background-size: 1.25em;
-  }
-
-  input:focus {
-    border-bottom: 2px solid #ffd475;
-    background: #ffeec8;
-    opacity: 1;
-    transition: border, opacity 0.3s ease-in;
-  }
-
-  @media(max-width: 560px){
-    small{
-      display:none;
-    }
-  }
-`;
-
-const StyledSorting = styled.div`
-  max-width: 40rem;
-  display: flex;
-  align-items: center;
-
-  .sort-icon {
-    fill: #666;
-    font-size: 2rem;
-    border-radius: 50%;
-    background: #ffeec8;
-    width: 1.5em;
-    height: 1.55em;
-    padding: 0.25em;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .sort-icon:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-  }
-
-  small {
-    font-size: 0.8rem;
-    margin-left: 1em;
-  }
-`;
+import { StyledSorting } from "../../Styled/styled-sorting.js";
+import { StyledQuotesContainer } from "../../Styled/styled-quotescontainer.js";
 
 const sortQuotes = (quotes, isAscending) => {
   return [...quotes].sort((a, b) => {
@@ -158,7 +92,7 @@ const QuoteList = () => {
 
   return (
     <>
-      <StyledContainer>
+      <StyledQuotesContainer>
         <StyledSorting>
           {isAscending && (
             <AiOutlineSortDescending
@@ -181,9 +115,9 @@ const QuoteList = () => {
           onChange={handleOnSearch}
           onBlur={HandleBlurSearch}
         ></input>
-      </StyledContainer>
+      </StyledQuotesContainer>
       {isLoading && (
-        <div className="center">
+        <div className="loader">
           <BeatLoader size={20} color="#ffd475" className="center" loading={isLoading} />
         </div>
       )}

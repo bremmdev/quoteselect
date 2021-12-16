@@ -1,4 +1,3 @@
-
 import { Routes, Route, Navigate } from "react-router-dom";
 import AllQuotes from "./pages/AllQuotes";
 import NewQuote from "./pages/NewQuote";
@@ -7,7 +6,6 @@ import Layout from "./components/Layout.js";
 import QuoteDetails from "./pages/QuoteDetails";
 
 function App() {
-
   return (
     <Layout>
       <Routes>
