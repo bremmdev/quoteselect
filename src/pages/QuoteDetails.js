@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router";
 import QuoteItemDetail from "../components/quotes/QuoteItemDetail";
 import useFetch from "../hooks/useFetch";
 import { BeatLoader } from "react-spinners";
+import AnimatedPage from "../components/AnimatedPage";
 
 const QuoteDetails = () => {
   const { quoteId } = useParams();
@@ -24,7 +25,7 @@ const QuoteDetails = () => {
   }, [quoteId, fetchSingleQuote]);
 
   return (
-    <>
+    <AnimatedPage>
       {isLoading && (
         <div className="loader">
           <BeatLoader
@@ -57,7 +58,7 @@ const QuoteDetails = () => {
           </button>
         </>
       )}
-    </>
+    </AnimatedPage>
   );
 };
 
