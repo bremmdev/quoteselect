@@ -57,11 +57,6 @@ const QuoteList = () => {
     setSearchQuery(query);
   };
 
-  const HandleBlurSearch = (e) => {
-    e.target.value = "";
-    setSearchQuery("");
-  };
-
   const changeSortingHandler = () => {
     navigate(`/quotes?sort=${isAscending ? "desc" : "asc"}`);
   };
@@ -98,7 +93,6 @@ const QuoteList = () => {
           type="text"
           placeholder="Search author..."
           onChange={handleOnSearch}
-          onBlur={HandleBlurSearch}
         ></input>
       </StyledQuotesContainer>
       {isLoading && (
